@@ -1,0 +1,81 @@
+/* STEP 5.2 - Add the servo device  */
+/ {
+  chosen {
+    nordic,nus-uart = &uart0;
+  };
+  
+
+    servo: servo {
+        compatible = "pwm-servo";
+        pwms = <&pwm1 0 PWM_MSEC(20) PWM_POLARITY_NORMAL>;
+        min_pulse = <PWM_USEC(500)>;
+        max_pulse = <PWM_USEC(3000)>;
+    };
+
+};
+
+/* STEP 5.3 - Configure which pins pwm1 should use */
+&pwm1 {
+    status = "okay";
+    pinctrl-0 = <&pwm1_custom_motor>;
+    pinctrl-1 = <&pwm1_csleep_motor>;
+    pinctrl-names = "default", "sleep";
+};
+
+&pinctrl {
+    pwm1_custom_motor: pwm1_custom_motor {
+        group1 {
+            psels = <NRF_PSEL(PWM_OUT0, 0, 13)>;
+            nordic,invert;
+        };
+    };
+
+    pwm1_csleep_motor: pwm1_csleep_motor {
+        group1 {
+            psels = <NRF_PSEL(PWM_OUT0, 0, 13)>;
+            low-power-enable;
+        };
+    };
+};  
+
+// 	servo: servo {
+// 		compatible = "pwm_servo";
+// 		pwms = <&sw_pwm 0 PWM_MSEC(20) PWM_POLARITY_NORMAL>;
+// 		min_pulse = <PWM_USEC(700)>;
+// 		max_pulse = <PWM_USEC(3000)>;
+// 	};
+// };
+
+// &sw_pwm {
+//   status = "okay";
+//   clock-prescaler = <4>;
+//   channel-gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
+// };
+
+&gpio0 {
+  gpio-line-names = "P0.0", "P0.1", "P0.2", "P0.3",
+                    "P0.4", "P0.5", "P0.6", "P0.7",
+                    "P0.8", "P0.9", "P0.10", "P0.11",
+                    "P0.12", "P0.13", "P0.14", "P0.15",
+                    "P0.16", "P0.17", "P0.18", "P0.19",
+                    "P0.20", "P0.21", "P0.22", "P0.23",
+                    "P0.24", "P0.25", "P0.26", "P0.27",
+                    "P0.28", "P0.29", "P0.30", "P0.31";
+  status = "okay";
+};
+
+// &pinctrl {
+//   pwm1_custom_motor: pwm1_custom_motor {
+//       group1 {
+//           psels = <NRF_PSEL(PWM_OUT1, 0, 13)>;
+//           nordic,invert;
+//       };
+//   };
+
+//   pwm1_csleep_motor: pwm1_csleep_motor {
+//       group1 {
+//           psels = <NRF_PSEL(PWM_OUT1, 0, 13)>;
+//           low-power-enable;
+//       };
+//   };
+// };

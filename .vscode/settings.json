@@ -1,0 +1,19 @@
+{
+	"files.associations": {
+		"kernel.h": "c",
+		"log.h": "c",
+		"gpios.h": "c",
+		"util.h": "c",
+		"uart_async_adapter.h": "c",
+		"printk.h": "c",
+		"pwm.h": "c",
+		"buzzer.h": "c",
+		"servo.h": "c",
+		"pir.h": "c",
+		"gpio.h": "c",
+		"devicetree.h": "c",
+		"kscan.h": "c",
+		"led.h": "c",
+		"btn.h": "c"
+	}
+}
