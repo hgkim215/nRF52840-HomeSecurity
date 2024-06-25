@@ -87,3 +87,17 @@ Bluetooth 연결을 nRF ToolBox 앱을 통해서 하고, 무선 명령어를 핸
    - `servo/`: 서보 모터 관련 소스 코드가 들어있습니다.
 
 이 프로젝트는 Zephyr OS 기반으로 작성되었으며, 다양한 하드웨어 구성 요소(버튼, LED, 부저, PIR 센서, 서보 모터 등)를 포함하고 있습니다. 각 하드웨어 구성 요소에 대한 소스 코드와 Device Tree Overlay 파일이 별도의 폴더에 구성되어 있습니다. 이를 통해 프로젝트의 구조와 코드 관리가 체계적으로 이루어지고 있습니다. 
+
+## 빌드 과정
+VSCODE에서 NRF_CONNECT 익스텐션을 다운받은 이후, Build Configuration 작성을 합니다.
+1. Add Build Configuration에서 Board로 `nrf52840dk_nrf52840`을 선택
+2. Configuration에서 `prj.conf` 선택
+3. Devicetree Overlays에서 `app.overlay`, `buzzer.overlay`, `led.overlay`, `pir.overlay`, `servo.overlay` 파일을 추가한다.
+4. Build Configuration 버튼을 누르면 완료!
+
+## 오픈소스 정보
+https://github.com/UmileVX/IoT-Development-with-Nordic-Zephyr 
+https://docs.nordicsemi.com/bundle/ncs-latest/page/zephyr/hardware/peripherals/index.html 
+
+## Copyright
+Copyright (c) 2024 Hyeongi Kim, Myeonghoon Ahn.
